@@ -1,31 +1,11 @@
 <!-- Wir laden das base.html Template und können dann die berreiche überschreiben, die wir wollen-->
 {% extends "base.html" %}
 <!-- Der Block "title" wird überschrieben -->
-{% block title %}Home{% endblock %}
+{% block title %}Hootevents{% endblock %}
 
 <!-- Der Block "content" wird überschrieben -->
 {% block content %}
 
 <!-- Zeige alle Notizen, die der Nutzer erstellt hat -->
-<h1 align="center">Notes</h1>
-<ul class="list-group list-group-flush" id="notes">
-  {% for note in user.notes %}
-  <li class="list-group-item">
-    {{ note.data }}
-    <!-- Button um eine Notiz zu löschen-->
-    <!-- ruft die Javaskript funktion delete Note-->
-    <button type="button" class="close" onClick="deleteNote({{ note.id }})">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </li>
-  {% endfor %}
-</ul>
-<!-- Button um neue Notizen hinzuzufügen-->
-<form method="POST">
-  <textarea name="note" id="note" class="form-control"></textarea>
-  <br />
-  <div align="center">
-    <button type="submit" class="btn btn-primary">Add Note</button>
-  </div>
-</form>
+<h1 align="center">Hootevents</h1>
 {% endblock %}
