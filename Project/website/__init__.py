@@ -6,6 +6,7 @@ from os import path
 # managed alle einlogg Sachen
 from flask_login import LoginManager
 
+
 # Erstelle das Datenbank Objekt und gib ihm einen Namen
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -56,13 +57,3 @@ def create_app():
         return User.query.get(int(id))
 
     return app
-
-# Funktioniert nichtmehr in SQLAlchemy 3 und ist auch nicht benötigt. create_all() erstellt nun sowieso nur nich exestierende Datenbanken
-
-# gucke ob wir schon eine Datenbank haben, wenn nicht erstellen wir eine
-# def create_database(app):
-    # Wenn die Datenbank nicht existiert
-    # if not path.exists('website/' + DB_NAME):
-    # Erstelle eine Datenbank. für die Aktuelle app
-    # db.create_all(app=app)
-    # print('Created Database')

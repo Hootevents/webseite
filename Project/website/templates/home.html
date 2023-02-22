@@ -1,11 +1,21 @@
 <!-- Wir laden das base.html Template und können dann die berreiche überschreiben, die wir wollen-->
 {% extends "base.html" %}
-<!-- Der Block "title" wird überschrieben -->
+<!-- The Title Block gets overwritten -->
 {% block title %}Hootevents{% endblock %}
 
-<!-- Der Block "content" wird überschrieben -->
+<!-- The content Block gets overwritten -->
 {% block content %}
-
-<!-- Zeige alle Notizen, die der Nutzer erstellt hat -->
 <h1 align="center">Hootevents</h1>
+Dies ist die Hootevents Webseite.
+<h2>Angebote</h2>
+Momentan werden folgende Events angeboten
+<h3>Professionelles Spielleiten von Pen&Paper Rollenspielen</h3>
+<h3>Schnupperabende Pen&Paper Rollenspiele</h3>
+<h3>Professionelles Spielleiten von Brett und Gruppenspielen</h3>
+
+<h2>Über</h2>
+Für Kontaktanfragen aller Art bitte an diese Email wenden:
+<a href="mailto:hootevents@tutanota.de">hootevents@tutanota.de</a> <br>
+Spontacts Events:
+<a href="http:https://community.spontacts.com/EA78EYUKXBP">https://community.spontacts.com/EA78EYUKXBP</a>
 {% endblock %}

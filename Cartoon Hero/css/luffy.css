@@ -1,0 +1,70 @@
+body{
+	margin: 0;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	line-height: 30px;
+}
+
+header{
+	background-color: lightblue;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+h1, h2{
+	font-family: 'Peralta', cursive;
+}
+
+header h1{
+	color: darkgreen;
+	font-size: 50px;
+
+}
+
+header img{
+	border-radius: 94px;
+    width: 264px;
+    border: 10px solid salmon;
+}
+
+main{
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px 20px;
+}
+
+main img{
+	max-width: 100%;
+}
+
+h2{
+	font-size: 35px;
+	color: darkred;
+	margin: 40px 0 10px;
+}
+
+a{
+	color: blueviolet;
+}
+
+a:hover{
+	background-color: grey;
+	color: purple;
+}
+
+footer{
+	background-color: darkblue;
+	color: whitesmoke;
+	padding: 50px;
+}
+
+footer p{
+	margin: 0;
+}
+
+p.caption{
+	color: gray;
+	font-style: italic;
+	margin: 0;
+}
