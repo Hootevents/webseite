@@ -1,0 +1,109 @@
+<!-- Mit Flask lässt sich die Templating Sprache Jinja verwenden. Dadurch können wir etwas Python code in Html schreiben ohne Javascript zu benutzen. 
+Dieses Dokument ist das Basis Template. Wir überschreiben dann dieses Basis Template mit den speziellen Inhalten der einzelnen Seiten-->
+
+<!DOCTYPE html>
+<html>
+  <!-- Jedes html Dokument hat ein head und einen body. Im head sind die Metadaten und im body der Inhalt -->
+  <head>
+    <!-- Welcher Buchstabensatz wird verwendet-->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--Hier wird bootstrap importiert. Damit stehen uns Klassen zur verfügung, die wir zum einfachen stylisieren unserer Webseite benutzen können.
+  Dies ist rein optisch und hat keinen Einfluss auf die Funkktion der webseite.-->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      crossorigin="anonymous"
+    />
+    <!-- Um Jinja zu benutzen wird dass immer in "geschw Klammer Prozent"  Blöcke geschrieben. Hier könnte if oder for stehen, wir benutzen jetzt block
+  block "name" Test endblock .Gibt uns einen spezifischen Teil, den wir auf anderen Webseiten überschreiben können, wenn wir den Block mit dem "name"n erneut definieren-->
+    <title>{% block title %}Home{% endblock %}</title>
+  </head>
+  <body>
+    <!-- Hier werden Bootstrap Klassen verwendet, um eine Navigationsleiste zu erstellen
+    span stellt ein icon dar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar">
+        <div class="navbar-nav">
+          <!-- Zeige nur bestimmte Buttons je nachdem ob der Nutzer eingeloggt ist oder nicht-->
+          {% if user.is_authenticated%}
+          <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+          <a class="nav-item nav-link" id="home" href="/">Home</a>
+          {% else %}
+          <a class="nav-item nav-link" id="login" href="/login">Login</a>
+          <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+          {%endif%}
+        </div>
+      </div>
+    </nav>
+
+    <!-- Popup Nachrichten anzeigen:-->
+    <!-- definiert die Variable messages als alle flashed messages in python zusammen mit deren Kategorien-->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    <!-- wird nur ausgefürht, wenn wir auch messages haben -->
+    {% if messages %}
+    <!-- für alle message in messages-->
+    {% for category, message in messages %} {% if category == 'error' %}
+    <!-- bootstrap klasse zeigt, wie die Meldung aussieht alert-danger, macht das Banner rot-->
+    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+      <!-- Nacchricht aus Python -->
+      {{ message }}
+      <!-- Button um das Alert zu schließen -->
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alert-dismissable fade show" role="alert">
+      <!-- Nacchricht aus Python -->
+      {{ message }}
+      <!-- Button um das Alert zu schließen -->
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+
+    <!-- div kennzeichnet ein Abschnitt eines html dokuments
+  container heißt, dass es etwas vom Rand absteht, wird nicht zentriert 
+  content ist der Name des Blocks-->
+    <div class="container">{% block content %} {% endblock %}</div>
+
+    <!-- Mittels Bootstrap laden wir hier etwas Javaskript um eine schöne Navigationszeile zu haben (animationen etc.). Wenn man selber JS einbinden wollte, packt man seinen JS in den Static Ordner.
+  (Im Static Ordner sind unveränderte Inhalte, wie auch Bilder z.b.) -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Hier wird jetzt eine Javaskript datei im static ordner geladen. Die geschweiften Klammern zeigen, dass Python Sprache verwendet wird -->
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='index.js') }}"
+    ></script>
+  </body>
+</html>

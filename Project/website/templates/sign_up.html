@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
+content %}
+<!-- Die Sign Up Seite wird gebaut. Wenn die Felder des formulars ausgefüllt sind, wird ein "POST" request an das Back end gesendet
+Post ist ein eine Http Methode, die Signalisiert, dass irgendeine Änderung stattfindet. In entweder den Daten oder dem Zustand der Webseite (einloggen) -->
+<form method="POST">
+  <!-- Überschrift -->
+  <h3 align="center">Sign Up</h3>
+  <!-- form-group ist eine Bootstrap klasse -->
+  <div class="form-group">
+    <!-- Das was vor dem Eingabefeld steht, for setzt man gleich der id des entsprechenden Feldes-->
+    <label for="email">Email Address</label>
+    <!-- form-controll:bootstrap class
+	type: Art der Eintragung(Zahl,Datum,text etc.)
+	id: optional, linkt aber das label mit dem Input Feld
+	name: Name der ans Backend übergebenen Variable
+	placeholder: Was in dem Feld drin steht-->
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="Enter email"
+    />
+  </div>
+  <!-- Jetzt noch die anderen Felder
+	id sollte immer gleich dem Namen sein hier	-->
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="firstName"
+      name="firstName"
+      placeholder="Enter first name"
+    />
+  </div>
+  <!--Passwort 1-->
+  <div class="form-group">
+    <label for="password1">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password1"
+      name="password1"
+      placeholder="Enter password"
+    />
+  </div>
+  <!--Passwort 2-->
+  <div class="form-group">
+    <label for="password2">Password (Confirm)</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password2"
+      name="password2"
+      placeholder="Confirm password"
+    />
+  </div>
+  <br />
+  <!--Knopf zum abschicken der eingabe. 
+	type: funktion
+	class:bootstrap-->
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

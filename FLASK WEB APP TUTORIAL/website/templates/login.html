@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
+%}
+<!-- In einem Python Block kann man eine in das Dokument gesendete Variable benutzen. Dafür schreibt man zb. if, else, endif in separate Blöcke-->
+<!-- Hier werden nun 2 Variablen dargestellt-->
+
+<!--Wir benutzen die selben Sachen wie bei sign_up und modifizieren die leicht-->
+<form method="POST">
+  <!-- Überschrift -->
+  <h3 align="center">Login</h3>
+  <!-- form-group ist eine Bootstrap klasse -->
+  <div class="form-group">
+    <!-- Das was vor dem Eingabefeld steht, for setzt man gleich der id des entsprechenden Feldes-->
+    <label for="email">Email Address</label>
+    <!-- form-controll:bootstrap class
+	  type: Art der Eintragung(Zahl,Datum,text etc.)
+	  id: optional, linkt aber das label mit dem Input Feld
+	  name: Name der ans Backend übergebenen Variable
+	  placeholder: Was in dem Feld drin steht-->
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="Enter email"
+    />
+  </div>
+  <!--Passwort-->
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      placeholder="Enter password"
+    />
+  </div>
+  <br />
+  <!--Knopf zum abschicken der eingabe. 
+	  type: funktion
+	  class:bootstrap-->
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endblock %}
